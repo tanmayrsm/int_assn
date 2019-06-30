@@ -16,4 +16,6 @@ Parked vehicle
 Notification       
 <img src="images/5.PNG" alt="My cool logo"/>     
 
+Chart
+<img src="images/7.PNG" alt="My cool logo"/>     
 
