@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+	{% block content %}
+		<div class="alert alert-info" style="font-weight: bold;">		
+			Search Results : {{ length }}
+		</div>
+		{% for post in s %}
+			<article class="media content-section">
+				
+			  <div class="media-body">
+			    <div class="article-metadata">
+			      <a class="mr-2" href="{{ url_for('user_posts', username = post.username) }}">{{ post.vehicle_no }}</a>
+			      <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+			    </div>
+			    <h2><a class="article-title" href="{{ url_for('post' ,post_id = post.id ) }}">{{ post.license }}</a></h2>
+			    <img src = "{{ url_for('static' ,filename = 'post_pic/'+post.image_file) }}" style="width: 600px;height: 400px;border-radius: 10px;">
+			    
+			  </div>
+			</article>
+		{% endfor %}
+		
+	{% endblock content %}
