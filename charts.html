@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+	{% block content %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	<canvas id="myChart" width="10" height="10" ></canvas>
+	<script>
+		var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [{% for item in labels %}
+             "{{item}}",
+            {% endfor %}],
+    datasets: [{
+      label: '{{ legend }}',
+      data: {{ values }},
+      backgroundColor: 'rgba(255, 99, 132, 1)',
+    },
+    
+    ]
+  },
+  options: {
+    scales: {
+      xAxes: [{
+      	scaleLabel: {
+            display: true,
+            labelString: 'Vehicle No'
+          },
+        
+        
+        barPercentage: 0.3,
+      }],
+      yAxes: [{
+      	scaleLabel: {
+            display: true,
+            labelString: 'No of minutes spent'
+          },
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+	</script>
+{% endblock content %}
