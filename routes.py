@@ -8,8 +8,6 @@ from PIL import Image
 from flask_mail import Message
 import datetime
 
-sear = []
-
 def Remove(duplicate): 
 	final_list = [] 
 	for num in duplicate: 
@@ -60,7 +58,7 @@ def charts():
 
 @app.route("/search" ,methods = ['GET','POST'])
 def search():
-
+	sear = []
 	form = SearchForm()
 	l = len(Check.query.all())
 	
@@ -74,20 +72,15 @@ def search():
 		   		if g not in sear:
 		   			sear.append(g)
 
-	    		
-
-		return redirect(url_for('search_items'))
-	return render_template('search_now.html',title = 'Search', form = form)
-
-@app.route("/search_items")
-def search_items():
-	k = len(sear)
-
-	if k == 0:
-		flash (f'Empty text !!', 'warning')
-		return redirect(url_for('home'))
-	
-	return render_template('search.html',s = sear ,length = k)
+		k = len(sear)
+		sear  =Remove(sear)
+		if k == 0:
+			flash (f'0 Query results !', 'warning')
+			return redirect(url_for('search'))
+		
+		return render_template('search.html',s = sear ,length = k,data = s)	
+			
+	return render_template('search_now.html',title = 'Search', form = form )
 
 @app.route("/noti")
 def noti():
