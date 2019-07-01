@@ -17,7 +17,7 @@ Notification
 <img src="images/5.PNG" alt="My cool logo"/>          
      
 Chart
-<img src="images/7.PNG" alt="My cool logo"/>          
+<img src="images/13.PNG" alt="My cool logo"/>          
        
 Search query
 <img src="images/10.PNG" alt="My cool logo"/>       
